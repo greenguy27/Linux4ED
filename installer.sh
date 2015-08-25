@@ -3,7 +3,7 @@
 #
 # installer.sh: installs multiple ubuntu apps at once
 #
-# Copyright (C) 2015 Khudaydad Mahmoodi
+# Copyright (C) 2015 Chris Ross
 #
 
 # make sure only root can run this script
@@ -56,4 +56,11 @@ do
     #notify-send --expire-time=3000 "$app" "Installed successfully."
     echo ">>> >>> >>> $app installed."
     sleep 2
+done
+
+appsToRemove=( tomboy hexchat thunderbird* simple-scan gthumb pidgin xchat* brasero* banshee transmission* )
+
+for app in "${appsToRemove[@]}"
+do
+    sudo apt-get purge -qy $app
 done
